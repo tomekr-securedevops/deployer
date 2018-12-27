@@ -45,9 +45,9 @@ func (dplr *deployer) postWebHook(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("%+v", hookData)
 	// This application only accepts containers placed under the
-	// `securingdevops` dockerhub organization. If this wasn't an
+	// `tomekrsecuredevops` dockerhub organization. If this wasn't an
 	// example application, we would make the namespacing configurable
-	if hookData.Repository.Namespace != `securingdevops` {
+	if hookData.Repository.Namespace != `tomekrsecuredevops` {
 		httpError(w, http.StatusUnauthorized, "Invalid namespace")
 		return
 	}
