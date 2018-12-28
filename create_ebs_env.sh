@@ -10,7 +10,7 @@ fail() {
     exit 1
 }
 
-export AWS_DEFAULT_REGION=us-east-1
+export AWS_DEFAULT_REGION=us-east-2
 
 datetag=$(date +%Y%m%d%H%M)
 identifier=deployer$datetag
@@ -19,8 +19,8 @@ mkdir -p tmp/$identifier
 echo "Creating EBS application $identifier"
 
 # Find the ID of the default VPC
-aws ec2 describe-vpcs --filters Name=isDefault,Values=true > tmp/$identifier/defaultvpc.json || fail
-vpcid=$(jq -r '.Vpcs[0].VpcId' tmp/$identifier/defaultvpc.json)
+# aws ec2 describe-vpcs --filters Name=isDefault,Values=true > tmp/$identifier/defaultvpc.json || fail
+vpcid='vpc-030a261534079359a'
 echo "default vpc is $vpcid"
 
 # Create an elasticbeantalk application
